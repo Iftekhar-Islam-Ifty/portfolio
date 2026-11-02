@@ -333,7 +333,7 @@
 
       @media screen and (max-width: 374px) {
         .banner-three-title {
-          font-size: clamp(3rem, 18vw, 4.25rem);
+          font-size: clamp(4rem, 24vw, 6rem);
         }
 
         .banner-three-center {
@@ -354,6 +354,21 @@
         .banner-three-title {
           width: 100%;
           text-align: center;
+        }
+
+        .about-three-counter .tw-btn-circle {
+          width: clamp(220px, 72vw, 280px);
+          height: clamp(220px, 72vw, 280px);
+        }
+
+        .about-three-counter .tw-btn-circle-icon {
+          font-size: clamp(2.5rem, 12vw, 4rem);
+        }
+
+        .about-three-counter .tw-btn-circle > span > span:last-child {
+          max-width: 180px;
+          font-size: clamp(1rem, 4.5vw, 1.35rem);
+          line-height: 1.1;
         }
 
         .marquee-two-title {
@@ -1194,18 +1209,19 @@
                       <div class="tw-hover-btn-wrapper d-inline-block">
                         <a
                           class="tw-btn-circle tw-hover-btn-item tw-hover-btn tw-w-160-px tw-h-160-px lh-1 d-inline-flex justify-content-center align-items-center rounded-circle position-relative overflow-hidden border border-1 border-neutral-200"
-                          href="#projects"
+                          href="#contact"
+                          aria-label="Open contact section"
                         >
                           <span
                             class="d-flex flex-column justify-content-center"
                           >
                             <span
                               class="tw-btn-circle-icon text-heading tw-text-8 tw-transition-3 font-heading fw-medium"
-                              >3rd</span
+                              >Open</span
                             >
                             <span
                               class="text-heading fw-bold text-center tw-transition-3 tw-text-2xl fw-medium"
-                              >University Semester</span
+                              >to Opportunities</span
                             >
                           </span>
                           <i class="tw-btn-circle-dot bg-main-two-600"></i>
@@ -2465,6 +2481,7 @@
         </section>
 
         <section
+          id="contact"
           class="footer-three-area pt-120 tw-pb-10 position-relative z-1"
         >
           <div class="container tw-container-1800-px">
