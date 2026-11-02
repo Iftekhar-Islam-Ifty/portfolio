@@ -260,7 +260,8 @@
       h4,
       h5,
       h6 {
-        overflow-wrap: anywhere;
+        overflow-wrap: break-word;
+        word-break: normal;
       }
 
       @media screen and (max-width: 767px) {
@@ -341,6 +342,93 @@
 
         .hero-bridge span {
           gap: 8px;
+        }
+      }
+
+      @media screen and (max-width: 767px) {
+        .banner-three-title {
+          width: 100%;
+          text-align: center;
+        }
+
+        .marquee-two-title {
+          font-size: clamp(4.5rem, 23vw, 7rem);
+          line-height: 0.9;
+          white-space: nowrap;
+        }
+
+        .marquee_left {
+          gap: 24px;
+          overflow: hidden;
+        }
+
+        .portfolio-three-shape-title {
+          font-size: clamp(4.5rem, 24vw, 7rem);
+          line-height: 0.9;
+          white-space: nowrap;
+        }
+
+        .service-three-title {
+          max-width: 100%;
+          font-size: clamp(1rem, 5vw, 1.35rem) !important;
+          line-height: 1.1;
+          white-space: nowrap;
+        }
+
+        .footer-three-top-left > div:nth-child(2) {
+          display: flex;
+          align-items: center;
+          gap: 8px !important;
+          width: 100%;
+          margin-bottom: 24px !important;
+        }
+
+        .footer-three-top-left > div:nth-child(2) a {
+          min-width: 0;
+          font-size: clamp(0.75rem, 3.2vw, 1rem) !important;
+          line-height: 1.25;
+          overflow-wrap: anywhere;
+        }
+
+        .footer-three-top-left > div:first-child h2 {
+          font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+          line-height: 1.05;
+          text-wrap: balance;
+        }
+
+        .footer-three-top-left > div:nth-child(2) span {
+          flex: 0 0 auto;
+          font-size: 0.8rem !important;
+        }
+
+        .footer-three-top-info {
+          gap: 12px !important;
+        }
+
+        .footer-three-social {
+          margin-top: 12px;
+        }
+
+        .footer-three-social ul {
+          gap: 6px !important;
+        }
+
+        .footer-three-social ul li a {
+          width: 34px !important;
+          height: 34px !important;
+          font-size: 1rem !important;
+        }
+      }
+
+      @media screen and (max-width: 374px) {
+        .footer-three-top-left > div:nth-child(2) {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 6px !important;
+        }
+
+        .footer-three-top-left > div:nth-child(2) span {
+          display: none;
         }
       }
     </style>
