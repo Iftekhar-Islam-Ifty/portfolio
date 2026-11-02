@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="assets/css/aos.css"/>
+<link rel="stylesheet" href="assets/css/main.css"/>
+<style>
+      /* ==================== Hero Banner Alignment & Seamless Cutoff Fix ==================== */
+      .banner-three-man {
+        position: absolute;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .banner-three-man img {
+        display: block;
+        width: 100%;
+        height: auto;
+        /* Soft fade-out at the lower cutoff so no harsh cropped line is visible */
+        -webkit-mask-image: linear-gradient(to bottom, black 80%, black 92%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 80%, black 92%, transparent 100%);
+      }
+
+      .banner-three-center {
+        position: relative;
+        z-index: 2;
+        background: #f5f5f5;
+        border-radius: 0;
+        box-shadow:
+          0 4px 4px 0 rgba(0, 0, 0, 0.25),
+          -4px -4px 0 0 rgba(255, 255, 255, 0.25);
+        text-align: center;
+      }
+
+      .hero-bridge {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        margin: 0 auto 18px;
+        color: #000;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        line-height: 1.4;
+        text-transform: uppercase;
+      }
+
+      .hero-bridge span {
+        display: inline-flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .hero-bridge span:not(:last-child)::after {
+        content: "/";
+        color: var(--main-two-600);
+      }
+
+      .banner-three-center::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 10%;
+        right: 10%;
+        height: 8px;
+        background: #000;
+        border-top: 3px solid var(--main-two-600);
+      }
+
+      .banner-three-center-title {
+        max-width: 760px;
+        margin-inline: auto;
+        word-break: break-word;
+      }
+
+      /* Desktop (>= 1200px): Hero image restored to original upper position; center card lifted to meet bottom */
+      @media screen and (min-width: 1200px) {
+        .banner-three-man {
+          width: clamp(470px, 60vw, 880px);
+          inset-block-end: 45%;
+        }
+
+        .banner-three-center {
+          align-self: flex-start;
+          width: min(100%, 880px);
+          margin-top: -80px;
+          margin-inline: auto;
+          padding: 16px 42px 38px;
+        }
+      }
+
+      /* Tablet Landscape (992px to 1199px) */
+      @media screen and (min-width: 992px) and (max-width: 1199px) {
+        .banner-three-line-shape {
+          display: none !important;
+        }
+
+        .banner-three-man {
+          width: 480px;
+          top: -30px !important;
+          bottom: auto !important;
+          inset-block-end: auto !important;
+        }
+
+        .banner-three-center {
+          width: min(100%, 750px);
+          margin-top: 150px;
+          margin-inline: auto;
+          padding: 16px 36px 32px;
+        }
+
+        .banner-three-center-title {
+          font-size: 2.6rem;
+        }
+      }
+
+      /* Tablet Portrait (768px to 991px) */
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .banner-three-line-shape {
+          display: none !important;
+        }
+
+        .banner-three-man {
+          width: 380px;
+          top: -25px !important;
+          bottom: auto !important;
+          inset-block-end: auto !important;
+        }
+
+        .banner-three-center {
+          width: min(100%, 680px);
+          margin-top: 130px;
+          margin-inline: auto;
+          padding: 16px 30px 30px;
+        }
+
+        .banner-three-center-title {
+          font-size: 2.2rem;
+        }
+      }
+
+      /* Mobile Devices (< 768px) */
+      @media screen and (max-width: 767px) {
+        .banner-three-line-shape {
+          display: none !important;
+        }
+
+        /* Push man image UP into the section padding area so it overlaps the title text,
+           mimicking the desktop layout where the figure stands over 'SOFTWARE ENGINEER' */
+        .banner-three-man {
+          width: min(92vw, 360px);
+          top: -100px !important;
+          bottom: auto !important;
+          inset-block-end: auto !important;
+        }
+
+        /* Push center card down so it docks right below the man image */
+        .banner-three-center {
+          width: 100%;
+          margin-top: 320px;
+          margin-inline: auto;
+          padding: 16px 20px 28px;
+        }
+
+        .banner-three-center-title {
+          font-size: clamp(1.4rem, 5.5vw, 1.9rem);
+        }
+
+        .hero-bridge {
+          gap: 6px 12px;
+          font-size: 0.65rem;
+          letter-spacing: 0.08em;
+        }
+
+        .hero-bridge span {
+          gap: 12px;
+        }
+      }
+
+      /* Navbar social icons: always visible on all screens */
+      .header-three-social {
+        display: flex !important;
+        align-items: center;
+      }
+
+      @media screen and (max-width: 991px) {
+        .header-three-social ul { gap: 6px !important; }
+        .header-three-social ul li a { width: 38px !important; height: 38px !important; font-size: 1rem !important; }
+      }
+
+      @media screen and (max-width: 575px) {
+        .header-three-social ul { gap: 4px !important; }
+        .header-three-social ul li a { width: 32px !important; height: 32px !important; font-size: 0.85rem !important; }
+        .header-three-logo { padding: 8px 12px 6px !important; }
+        .header-three-logo a { font-size: 1.2rem !important; }
+        .header-three-menu button { width: 36px !important; height: 36px !important; }
+      }
+
+      .footer-three-bottom-title {
+        font-size: clamp(58px, 13vw, 270px);
+        line-height: 0.83;
+        white-space: nowrap;
+        width: 100%;
+        text-align: center;
+      }
+
+      .footer-three-bottom {
+        overflow: hidden;
+      }
+
+      @media screen and (max-width: 575px) {
+        .footer-three-bottom-title {
+          font-size: clamp(42px, 13vw, 88px);
+        }
+      }
+    </style>
+<style>
+.preloader { display: none !important; }
+[data-aos] { opacity: 1 !important; transform: none !important; transition: none !important; }
+body { visibility: visible !important; }
+</style>
+</head>
+<body class="tw-magic-cursor">
+<header
+      class="header header-two header-three tw-transition-all tw-z-99 position-relative"
+    >
+      <div class="container tw-container-1800-px">
+        <nav
+          class="d-flex align-items-center justify-content-between position-relative"
+        >
+          <!-- Logo Start -->
+          <div class="header-three-logo tw-rounded-md">
+            <a href="index.html" class="link text-heading fw-bold tw-text-2xl">
+              IFTY
+            </a>
+          </div>
+          <!-- Logo End  -->
+
+          <!-- Menu Start  -->
+          <div class="header-three-social d-flex align-items-center">
+            <ul class="d-flex tw-gap-205">
+              <li>
+                <a
+                  class="tw-w-13 tw-h-13 lh-1 d-inline-flex justify-content-center align-items-center text-heading tw-text-xl tw-rounded-md"
+                  href="https://github.com/Iftekhar-Islam-Ifty"
+                  target="_blank"
+                  ><i class="ph-bold ph-github-logo"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  class="tw-w-13 tw-h-13 lh-1 d-inline-flex justify-content-center align-items-center text-heading tw-text-xl tw-rounded-md"
+                  href="#projects"
+                  ><i class="ph-bold ph-code"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  class="tw-w-13 tw-h-13 lh-1 d-inline-flex justify-content-center align-items-center text-heading tw-text-xl tw-rounded-md"
+                  href="https://www.linkedin.com/in/md-iftekharul-islam-a31b67394"
+                  target="_blank"
+                  ><i class="ph-bold ph-student"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  class="tw-w-13 tw-h-13 lh-1 d-inline-flex justify-content-center align-items-center text-heading tw-text-xl tw-rounded-md"
+                  href="https://github.com/Iftekhar-Islam-Ifty"
+                  target="_blank"
+                  ><i class="ph-bold ph-github-logo"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <!-- Menu End  -->
+
+          <!-- Menu Start  -->
+          <div class="header-menu d-none">
+            <!-- Nav menu Start -->
+            <div class="main-menu">
+              <nav class="tw-main-menu-content">
+                <ul>
+                  <li class="p-static has-dropdown">
+                    <a class="color-active" href="index.html">Home</a>
+                    <!-- mega menu start -->
+                    <div class="tw-submenu submenu has-homemenu">
+                      <div
+                        class="row gx-6 row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2"
+                      >
+                        <div class="col homemenu">
+                          <div class="homemenu-thumb tw-mb-4">
+                            <img
+                              src="assets/images/thumbs/home1.jpg"
+                              alt="home-one"
+                            />
+                            <div class="homemenu-btn w-100">
+                              <div class="tw-mb-2">
+                                <a
+                                  class="bg-main-two-600 text-white fw-semibold tw-py-3 tw-text-sm d-inline-block hover-bg-white hover-text-heading menu-btn show-1"
+                                  href="index.html"
+                                >
+                                  Multi Page
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="homemenu-content text-center">
+                            <h4 class="homemenu-title">
+                              <a href="index.html">Ceative Agency</a>
+                            </h4>
+                          </div>
+                        </div>
+                        <div class="col homemenu">
+                          <div class="homemenu-thumb tw-mb-4">
+                            <img
+                              src="assets/images/thumbs/home2.jpg"
+                              alt="home-two"
+                            />
+                            <div class="homemenu-btn w-100">
+                              <div class="tw-mb-2">
+                                <a
+                                  class="bg-main-two-600 text-white fw-semibold tw-py-3 tw-text-sm d-inline-block hover-bg-white hover-text-heading menu-btn show-1"
+                                  href="index-2.html"
+                                >
+                                  Multi Page
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="homemenu-content text-center">
+                            <h4 class="homemenu-title">
+                              <a href="index-2.html">Digital Studio</a>
+                            </h4>
+                          </div>
+                        </div>
+                        <div class="col homemenu">
+                          <div class="homemenu-thumb tw-mb-4">
+                            <img
+                              src="assets/images/thumbs/home3.jpg"
+                              alt="home-three"
+                            />
+                            <div class="homemenu-btn w-100">
+                              <div class="tw-mb-2">
+                                <a
+                                  class="bg-main-two-600 text-white fw-semibold tw-py-3 tw-text-sm d-inline-block hover-bg-white hover-text-heading menu-btn show-1"
+                                  href="index-3.html"
+                                >
+                                  Multi Page
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="homemenu-content text-center">
+                            <h4 class="homemenu-title">
+                              <a href="index-3.html">Personal Portfolio</a>
+                            </h4>
+                          </div>
+                        </div>
+                        <div class="col homemenu">
+                          <div class="homemenu-thumb tw-mb-4">
+                            <img
+                              src="assets/images/thumbs/coming-soon-img.png"
+                              alt="coming-soon"
+                            />
+                          </div>
+                          <div class="homemenu-content text-center">
+                            <h4 class="homemenu-title">
+                              <a href="#">Coming Soon</a>
+                            </h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- mega menu end -->
+                  </li>
+                  <li><a href="about.html">About Us</a></li>
+                  <li class="has-dropdown">
+                    <a href="service.html">Services</a>
+                    <ul class="submenu tw-submenu">
+                      <li><a href="service.html">Our Service</a></li>
+                      <li>
+                        <a href="service-details.html">Service Details</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="has-dropdown">
+                    <a href="#">Pages</a>
+                    <ul class="submenu tw-submenu">
+                      <li><a href="about.html">About Us</a></li>
+                      <li><a href="team.html">Our Team</a></li>
+                      <li><a href="testimonial.html">Testimonials</a></li>
+                      <li><a href="pricing.html">Pricing</a></li>
+                      <li><a href="portfolio-one.html">Portfolio One</a></li>
+                      <li><a href="portfolio-two.html">Portfolio Two</a></li>
+                      <li>
+                        <a href="portfolio-three.html">Portfolio Theee</a>
+                      </li>
+                      <li><a href="portfolio-four.html">Portfolio Four</a></li>
+                      <li>
+                        <a href="portfolio-details.html">Portfolio Details</a>
+                      </li>
+                      <li><a href="faq.html">Our Faq</a></li>
+                      <li><a href="error.html">Error</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-dropdown">
+                    <a href="blog.html">Blog</a>
+                    <ul class="submenu tw-submenu">
+                      <li><a href="blog.html">Blog</a></li>
+                      <li><a href="blog-list.html">Blog List</a></li>
+                      <li><a href="blog-details.html">Blog Details</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+            <!-- Nav menu End  -->
+          </div>
+          <!-- Menu End  -->
+
+          <!-- Header Right start -->
+          <div class="header-right d-flex align-items-center tw-gap-705">
+            <!-- Menu Button Start  -->
+            <div class="header-three-menu">
+              <button
+                class="tw-offcanvas-open-btn tw-w-13 tw-h-13 lh-1 d-inline-flex justify-content-center align-items-center tw-transition-3 tw-rounded-md"
+              >
+                <span
+                  ><img
+                    class="tw-transition-3"
+                    src="assets/images/icons/header-three-toggle.svg"
+                    alt="toggle"
+                /></span>
+              </button>
+            </div>
+            <!-- Menu Button End  -->
+
+            <!-- Header Button Start  -->
+            <div class="header-three-button d-none d-md-block">
+              <a
+                class="tw-hover-btn bg-black text-white fw-bold tw-py-4 tw-px-10 d-inline-block hover-text-white text-uppercase tw-rounded-md"
+                href="https://github.com/Iftekhar-Islam-Ifty"
+                target="_blank"
+              >
+                view GitHub
+                <span class="tw-hover-btn-circle-dot bg-main-two-600"></span>
+              </a>
+            </div>
+            <!-- Header Button End  -->
+          </div>
+
+          <!-- Header Right End  -->
+        </nav>
+      </div>
+    </header>
+<section class="banner-three-area">
+          <div class="container tw-container-1800-px">
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="banner-three-wrapper position-relative z-1">
+                  <div
+                    class="banner-three-man position-absolute start-50 translate-middle-x"
+                  >
+                    <img
+                      src="assets/images/shapes/banner-three-man2.png"
+                      alt="man"
+                    />
+                  </div>
+                  <h1 class="banner-three-title text-black tw-mb-30">
+                    software engineer
+                  </h1>
+                  <div
+                    class="banner-three-wrap d-flex justify-content-between align-items-end position-relative z-1"
+                  >
+                    <div
+                      class="banner-three-left tw-rounded-lg"
+                      data-aos="fade-up"
+                      data-aos-duration="1000"
+                      data-aos-delay="200"
+                    >
+                      <h2 class="banner-three-left-title tw-text-3xl tw-mb-6">
+                        Hello! I'm Iftekhar Islam <br />
+                        (Ifty), a CSE student and aspiring software engineer
+                        from Chittagong.
+                      </h2>
+                      <div class="banner-three-list">
+                        <ul>
+                          <li
+                            class="tw-text-lg fw-medium d-inline-flex align-items-center tw-gap-2 tw-mb-4"
+                          >
+                            <span
+                              ><img
+                                src="assets/images/icons/banner-three-pluse.svg"
+                                alt="pluse"
+                            /></span>
+                            Web Development
+                          </li>
+                          <li
+                            class="tw-text-lg fw-medium d-inline-flex align-items-center tw-gap-2 tw-mb-4"
+                          >
+                            <span
+                              ><img
+                                src="assets/images/icons/banner-three-pluse.svg"
+                                alt="pluse"
+                            /></span>
+                            AI-Assisted Development
+                          </li>
+                          <li
+                            class="tw-text-lg fw-medium d-inline-flex align-items-center tw-gap-2 tw-mb-4"
+                          >
+                            <span
+                              ><img
+                                src="assets/images/icons/banner-three-pluse.svg"
+                                alt="pluse"
+                            /></span>
+                            Backend & Databases
+                          </li>
+                          <li
+                            class="tw-text-lg fw-medium d-inline-flex align-items-center tw-gap-2 tw-mb-4"
+                          >
+                            <span
+                              ><img
+                                src="assets/images/icons/banner-three-pluse.svg"
+                                alt="pluse"
+                            /></span>
+                            Practical Software Projects
+                          </li>
+                          <li
+                            class="tw-text-lg fw-medium d-inline-flex align-items-center tw-gap-2 tw-mb-4"
+                          >
+                            <span
+                              ><img
+                                src="assets/images/icons/banner-three-pluse.svg"
+                                alt="pluse"
+                            /></span>
+                            Continuous Learning
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div
+                      class="banner-three-center text-center"
+                      data-aos="fade-up"
+                      data-aos-duration="1000"
+                      data-aos-delay="200"
+                    >
+                      <div class="hero-bridge" aria-label="Focus areas">
+                        <span>CSE Student</span>
+                        <span>Practical Builder</span>
+                        <span>Continuous Learner</span>
+                      </div>
+                      <h3 class="banner-three-center-title tw-text-120">
+                        Building practical software, one project at a time.
+                      </h3>
+                      <div class="banner-three-button">
+                        <a
+                          class="tw-hover-btn bg-black text-white fw-bold tw-py-4 tw-px-10 d-inline-block hover-text-white text-uppercase tw-rounded-lg"
+                          href="#projects"
+                        >
+                          view projects
+                          <span
+                            class="tw-hover-btn-circle-dot bg-main-two-600"
+                          ></span>
+                        </a>
+                      </div>
+                    </div>
+                    <div
+                      class="banner-three-right tw-rounded-lg"
+                      data-aos="fade-up"
+                      data-aos-duration="1000"
+                      data-aos-delay="300"
+                    >
+                      <div
+                        class="banner-three-counter-item tw-rounded-md tw-mb-4 position-relative"
+                      >
+                        <h4
+                          class="banner-three-counter-title tw-text-101 fw-semibold font-heading text-heading tw-mb-2 lh-1"
+                        >
+                          <span
+                            class="purecounter font-heading"
+                            data-purecounter-duration="2"
+                            data-purecounter-end="3"
+                          ></span
+                          >%
+                        </h4>
+                        <p
+                          class="banner-three-counter-paragraph tw-text-lg fw-medium text-heading"
+                        >
+                          Featured Projects
+                        </p>
+                      </div>
+                      <div
+                        class="banner-three-counter-item tw-rounded-md tw-mb-4 ms-auto bg-black"
+                      >
+                        <h4
+                          class="banner-three-counter-title tw-text-101 fw-semibold font-heading text-white tw-mb-2 lh-1"
+                        >
+                          <span
+                            class="purecounter font-heading"
+                            data-purecounter-duration="4"
+                            data-purecounter-end="3"
+                          ></span
+                          >+
+                        </h4>
+                        <p
+                          class="banner-three-counter-paragraph tw-text-lg fw-medium text-white"
+                        >
+                          Projects Launched
+                        </p>
+                      </div>
+                      <div
+                        class="banner-three-counter-item tw-rounded-md tw-mb-4"
+                      >
+                        <div class="d-flex align-items-center tw-mb-2">
+                          <div
+                            class="tw-w-9 tw-h-9 rounded-circle overflow-hidden tw-duration-300 hover-scale-2 tw-hover-z-9 position-relative z-1 border border-2 border-white"
+                          >
+                            <img
+                              src="assets/images/thumbs/team-img1.png"
+                              alt="Client Image"
+                              class="w-100 h-100 object-fit-cover"
+                            />
+                          </div>
+                          <div
+                            class="tw-w-9 tw-h-9 rounded-circle overflow-hidden tw-duration-300 hover-scale-2 tw-hover-z-9 position-relative z-2 tw--ms-16-px z-1 border border-2 border-white"
+                          >
+                            <img
+                              src="assets/images/thumbs/team-img2.png"
+                              alt="Client Image"
+                              class="w-100 h-100 object-fit-cover"
+                            />
+                          </div>
+                          <div
+                            class="tw-w-9 tw-h-9 rounded-circle overflow-hidden tw-duration-300 hover-scale-2 tw-hover-z-9 position-relative z-3 tw--ms-16-px z-1 border border-2 border-white"
+                          >
+                            <img
+                              src="assets/images/thumbs/team-img3.png"
+                              alt="Client Image"
+                              class="w-100 h-100 object-fit-cover"
+                            />
+                          </div>
+                          <div
+                            class="tw-w-9 tw-h-9 rounded-circle overflow-hidden tw-duration-300 hover-scale-2 tw-hover-z-9 position-relative z-3 tw--ms-16-px z-1 border border-2 border-white"
+                          >
+                            <img
+                              src="assets/images/thumbs/team-img4.png"
+                              alt="Client Image"
+                              class="w-100 h-100 object-fit-cover"
+                            />
+                          </div>
+                        </div>
+                        <h4
+                          class="banner-three-counter-title tw-text-101 fw-semibold font-heading text-heading tw-mb-2 lh-1"
+                        >
+                          <span
+                            class="purecounter font-heading"
+                            data-purecounter-duration="3"
+                            data-purecounter-end="96"
+                          ></span
+                          >+
+                        </h4>
+                        <p
+                          class="banner-three-counter-paragraph tw-text-lg fw-medium text-heading"
+                        >
+                          Academic Semester
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="banner-three-line-shape position-absolute start-50 translate-middle-x z-n1"
+                    >
+                      <img
+                        src="assets/images/shapes/banner-three-shape.png"
+                        alt="shape"
+                      />
+                      <div class="banner-three-carcel-shape">
+                        <div><span></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+</body>
+</html>
