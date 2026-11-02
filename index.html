@@ -371,6 +371,103 @@
           line-height: 1.1;
         }
 
+        .about-three-right {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          gap: 12px;
+          align-items: center;
+        }
+
+        .about-three-right > div:first-child {
+          grid-column: 1 / -1;
+        }
+
+        .about-three-counter {
+          width: 100%;
+          margin-block-start: 0 !important;
+        }
+
+        .about-three-counter .tw-hover-btn-wrapper,
+        .about-three-counter .tw-btn-circle {
+          width: 100%;
+        }
+
+        .about-three-counter .tw-btn-circle {
+          height: auto;
+          aspect-ratio: 1;
+        }
+
+        .about-mobile-stats {
+          display: grid;
+          gap: 10px;
+          min-width: 0;
+        }
+
+        .about-mobile-stat {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          min-height: 92px;
+          padding: 14px 12px;
+          background: #f5f5f5;
+          box-shadow:
+            0 4px 4px 0 rgba(0, 0, 0, 0.25),
+            -4px -4px 0 0 rgba(255, 255, 255, 0.25);
+        }
+
+        .about-mobile-stat strong {
+          color: #000;
+          font: 600 clamp(1.7rem, 8vw, 2.5rem) / 1 var(--heading-font);
+        }
+
+        .about-mobile-stat span {
+          color: #000;
+          font-size: clamp(0.65rem, 3vw, 0.85rem);
+          font-weight: 600;
+          line-height: 1.2;
+        }
+
+        .about-three-wrap-shape {
+          display: none;
+        }
+
+        .banner-three-wrap {
+          flex-direction: column;
+          align-items: stretch !important;
+        }
+
+        .banner-three-right {
+          display: grid !important;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+          width: 100%;
+          max-width: none;
+          margin: 18px 0 0;
+          padding: 0;
+          background: transparent;
+          box-shadow: none;
+        }
+
+        .banner-three-right .banner-three-counter-item {
+          max-width: none;
+          min-width: 0;
+          margin: 0 !important;
+          padding: 14px;
+        }
+
+        .banner-three-right .banner-three-counter-item:last-child {
+          grid-column: 1 / -1;
+        }
+
+        .banner-three-right .banner-three-counter-title {
+          font-size: clamp(1.7rem, 8vw, 2.5rem);
+        }
+
+        .banner-three-right .banner-three-counter-paragraph {
+          font-size: clamp(0.65rem, 3vw, 0.85rem);
+          line-height: 1.2;
+        }
+
         .marquee-two-title {
           font-size: clamp(4.5rem, 23vw, 7rem);
           line-height: 0.9;
@@ -1208,7 +1305,7 @@
                     <div class="about-three-counter d-inline-block">
                       <div class="tw-hover-btn-wrapper d-inline-block">
                         <a
-                          class="tw-btn-circle tw-hover-btn-item tw-hover-btn tw-w-160-px tw-h-160-px lh-1 d-inline-flex justify-content-center align-items-center rounded-circle position-relative overflow-hidden border border-1 border-neutral-200"
+                          class="smooth tw-btn-circle tw-hover-btn-item tw-hover-btn tw-w-160-px tw-h-160-px lh-1 d-inline-flex justify-content-center align-items-center rounded-circle position-relative overflow-hidden border border-1 border-neutral-200"
                           href="#contact"
                           aria-label="Open contact section"
                         >
@@ -1226,6 +1323,16 @@
                           </span>
                           <i class="tw-btn-circle-dot bg-main-two-600"></i>
                         </a>
+                      </div>
+                    </div>
+                    <div class="about-mobile-stats" aria-label="Portfolio highlights">
+                      <div class="about-mobile-stat">
+                        <strong>3+</strong>
+                        <span>Projects</span>
+                      </div>
+                      <div class="about-mobile-stat">
+                        <strong>96+</strong>
+                        <span>Learning Hours</span>
                       </div>
                     </div>
                   </div>

@@ -20,21 +20,27 @@
 (function ($) {
   "use strict";
 
+  let smoother;
+
   ////////////////////////////////////////////////////
   // 01. Smooth Scroll Js
   function smoothSctoll() {
-    $(".smooth a").on("click", function (event) {
+    $(".smooth a, a.smooth").on("click", function (event) {
       var target = $(this.getAttribute("href"));
       if (target.length) {
         event.preventDefault();
-        $("html, body")
-          .stop()
-          .animate(
-            {
-              scrollTop: target.offset().top - 120,
-            },
-            1500,
-          );
+        if (smoother) {
+          smoother.scrollTo(target[0], true, "top 120px");
+        } else {
+          $("html, body")
+            .stop()
+            .animate(
+              {
+                scrollTop: target.offset().top - 120,
+              },
+              1500,
+            );
+        }
       }
     });
   }
@@ -49,7 +55,7 @@
     gsap.config({
       nullTargetWarn: false,
     });
-    let smoother = ScrollSmoother.create({
+    smoother = ScrollSmoother.create({
       smoothTouch: 0.2,
       smooth: 4,
       effects: true,
