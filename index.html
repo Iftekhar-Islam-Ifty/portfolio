@@ -243,6 +243,106 @@
           font-size: clamp(42px, 13vw, 88px);
         }
       }
+
+      /* Keep narrow screens readable without horizontal overflow. */
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      a,
+      p,
+      li,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        overflow-wrap: anywhere;
+      }
+
+      @media screen and (max-width: 767px) {
+        .banner-three-area {
+          padding-block: 120px 56px;
+        }
+
+        .banner-three-title {
+          max-width: 100%;
+          font-size: clamp(3.25rem, 19vw, 5.5rem);
+          line-height: 0.88;
+          letter-spacing: -0.04em;
+          text-wrap: balance;
+        }
+
+        .banner-three-center-title {
+          max-width: 100%;
+          font-size: clamp(1.55rem, 7.5vw, 2rem);
+          line-height: 1.15;
+          text-wrap: balance;
+        }
+
+        .banner-three-button a {
+          max-width: 100%;
+          white-space: normal;
+          text-align: center;
+        }
+
+        .hero-bridge {
+          max-width: 100%;
+          letter-spacing: 0.04em;
+        }
+
+        .hero-bridge span {
+          max-width: 100%;
+          white-space: nowrap;
+        }
+
+        .header-three-social {
+          min-width: 0;
+        }
+
+        .header-three-social ul {
+          flex-wrap: nowrap;
+          gap: 2px !important;
+          justify-content: flex-end;
+        }
+
+        .header-three-social ul li {
+          flex: 0 0 auto;
+        }
+
+        .header-three-social ul li a {
+          width: 30px !important;
+          height: 30px !important;
+          font-size: 0.8rem !important;
+        }
+
+        .header-three-logo,
+        .header-right {
+          flex-shrink: 0;
+        }
+      }
+
+      @media screen and (max-width: 374px) {
+        .banner-three-title {
+          font-size: clamp(3rem, 18vw, 4.25rem);
+        }
+
+        .banner-three-center {
+          padding-inline: 14px;
+        }
+
+        .hero-bridge {
+          gap: 5px 8px;
+          font-size: 0.58rem;
+        }
+
+        .hero-bridge span {
+          gap: 8px;
+        }
+      }
     </style>
   </head>
 
@@ -520,14 +620,6 @@
                   href="https://www.linkedin.com/in/md-iftekharul-islam-a31b67394"
                   target="_blank"
                   ><i class="ph-bold ph-linkedin-logo"></i
-                ></a>
-              </li>
-              <li>
-                <a
-                  class="tw-w-13 tw-h-13 lh-1 d-inline-flex justify-content-center align-items-center text-heading tw-text-xl tw-rounded-md"
-                  href="https://github.com/Iftekhar-Islam-Ifty"
-                  target="_blank"
-                  ><i class="ph-bold ph-github-logo"></i
                 ></a>
               </li>
             </ul>
