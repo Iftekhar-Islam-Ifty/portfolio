@@ -239,9 +239,95 @@
         overflow: hidden;
       }
 
+      .portfolio-three-description {
+        max-width: 620px;
+        margin: 0 0 18px;
+        color: #333;
+        font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+        line-height: 1.6;
+      }
+
+      .portfolio-three-keyfacts {
+        display: grid;
+        gap: 6px 24px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: 0 0 18px;
+        padding: 0;
+        color: #333;
+        font-size: clamp(0.78rem, 1vw, 0.92rem);
+        line-height: 1.4;
+        list-style: none;
+      }
+
+      .banner-three-center-title {
+        line-height: 1.08;
+      }
+
+      .about-three-title,
+      .service-three-title,
+      .footer-three-top-left h2 {
+        line-height: 1.08;
+      }
+
+      .portfolio-three-item h2 {
+        font-size: clamp(2rem, 4vw, 4.5rem);
+        line-height: 0.98;
+      }
+
+      .portfolio-three-keyfacts li::before {
+        content: "•";
+        margin-right: 8px;
+        color: var(--main-two-600);
+      }
+
+      .offcanvas-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .offcanvas-brand-mark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--main-two-600);
+        border-radius: 50%;
+        color: #fff;
+        font: 600 1.5rem/1 var(--heading-font);
+      }
+
+      .offcanvas-brand-name {
+        display: inline-flex;
+        flex-direction: column;
+        color: #fff;
+        font: 600 1.05rem/0.95 var(--heading-font);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .offcanvas-brand-name span:last-child {
+        color: var(--main-two-600);
+        font-size: 0.82em;
+        letter-spacing: 0.22em;
+      }
+
       @media screen and (max-width: 575px) {
         .footer-three-bottom-title {
           font-size: clamp(42px, 13vw, 88px);
+        }
+
+        .offcanvas-brand-mark {
+          width: 36px;
+          height: 36px;
+          font-size: 1.25rem;
+        }
+
+        .offcanvas-brand-name {
+          font-size: 0.9rem;
         }
       }
 
@@ -406,6 +492,16 @@
           width: 100%;
           text-align: center;
           transform: translate(clamp(0px, 2vw, 12px), clamp(12px, 4vw, 20px));
+        }
+
+        .portfolio-three-description {
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+
+        .portfolio-three-keyfacts {
+          grid-template-columns: 1fr;
+          font-size: 0.78rem;
         }
 
         .about-three-counter .tw-btn-circle {
@@ -676,9 +772,17 @@
             class="tw-offcanvas-2-left-wrap d-flex justify-content-between align-items-center"
           >
             <div class="twoffcanvas__logo">
-              <a class="logo-1" href="index.html"
-                ><img src="assets/images/logo/logo.png" alt="logo"
-              /></a>
+              <a
+                class="logo-1 offcanvas-brand"
+                href="index.html"
+                aria-label="Iftekhar Islam home"
+              >
+                <span class="offcanvas-brand-mark">I</span>
+                <span class="offcanvas-brand-name">
+                  <span>Iftekhar</span>
+                  <span>Islam</span>
+                </span>
+              </a>
             </div>
             <div class="tw-offcanvas-2-close d-md-none text-end">
               <button class="tw-offcanvas-2-close-btn tw-offcanvas-2-close-btn">
@@ -797,7 +901,12 @@
             >
               <ul class="tw-gap-2">
                 <li>
-                  <a href="https://github.com/Iftekhar-Islam-Ifty" target="_blank">
+                  <a
+                    href="https://github.com/Iftekhar-Islam-Ifty"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Iftekhar Islam on GitHub"
+                  >
                     <span
                       class="active-media d-flex align-items-center tw-gap-1"
                       >GitHub <i class="ph ph-arrow-bend-up-right"></i
@@ -819,7 +928,12 @@
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/in/md-iftekharul-islam-a31b67394" target="_blank">
+                  <a
+                    href="https://www.linkedin.com/in/md-iftekharul-islam-a31b67394"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Iftekhar Islam on LinkedIn"
+                  >
                     <span
                       class="active-media d-flex align-items-center tw-gap-1"
                       >LinkedIn <i class="ph ph-arrow-bend-up-right"></i
@@ -889,138 +1003,11 @@
             <div class="main-menu">
               <nav class="tw-main-menu-content">
                 <ul>
-                  <li class="p-static has-dropdown">
-                    <a class="color-active" href="index.html">Home</a>
-                    <!-- mega menu start -->
-                    <div class="tw-submenu submenu has-homemenu">
-                      <div
-                        class="row gx-6 row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2"
-                      >
-                        <div class="col homemenu">
-                          <div class="homemenu-thumb tw-mb-4">
-                            <img
-                              src="assets/images/thumbs/home1.jpg"
-                              alt="home-one"
-                            />
-                            <div class="homemenu-btn w-100">
-                              <div class="tw-mb-2">
-                                <a
-                                  class="bg-main-two-600 text-white fw-semibold tw-py-3 tw-text-sm d-inline-block hover-bg-white hover-text-heading menu-btn show-1"
-                                  href="index.html"
-                                >
-                                  Multi Page
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="homemenu-content text-center">
-                            <h4 class="homemenu-title">
-                              <a href="index.html">Ceative Agency</a>
-                            </h4>
-                          </div>
-                        </div>
-                        <div class="col homemenu">
-                          <div class="homemenu-thumb tw-mb-4">
-                            <img
-                              src="assets/images/thumbs/home2.jpg"
-                              alt="home-two"
-                            />
-                            <div class="homemenu-btn w-100">
-                              <div class="tw-mb-2">
-                                <a
-                                  class="bg-main-two-600 text-white fw-semibold tw-py-3 tw-text-sm d-inline-block hover-bg-white hover-text-heading menu-btn show-1"
-                                  href="index-2.html"
-                                >
-                                  Multi Page
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="homemenu-content text-center">
-                            <h4 class="homemenu-title">
-                              <a href="index-2.html">Digital Studio</a>
-                            </h4>
-                          </div>
-                        </div>
-                        <div class="col homemenu">
-                          <div class="homemenu-thumb tw-mb-4">
-                            <img
-                              src="assets/images/thumbs/home3.jpg"
-                              alt="home-three"
-                            />
-                            <div class="homemenu-btn w-100">
-                              <div class="tw-mb-2">
-                                <a
-                                  class="bg-main-two-600 text-white fw-semibold tw-py-3 tw-text-sm d-inline-block hover-bg-white hover-text-heading menu-btn show-1"
-                                  href="index-3.html"
-                                >
-                                  Multi Page
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="homemenu-content text-center">
-                            <h4 class="homemenu-title">
-                              <a href="index-3.html">Personal Portfolio</a>
-                            </h4>
-                          </div>
-                        </div>
-                        <div class="col homemenu">
-                          <div class="homemenu-thumb tw-mb-4">
-                            <img
-                              src="assets/images/thumbs/coming-soon-img.png"
-                              alt="coming-soon"
-                            />
-                          </div>
-                          <div class="homemenu-content text-center">
-                            <h4 class="homemenu-title">
-                              <a href="#">Coming Soon</a>
-                            </h4>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- mega menu end -->
-                  </li>
-                  <li><a href="about.html">About Us</a></li>
-                  <li class="has-dropdown">
-                    <a href="service.html">Services</a>
-                    <ul class="submenu tw-submenu">
-                      <li><a href="service.html">Our Service</a></li>
-                      <li>
-                        <a href="service-details.html">Service Details</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="has-dropdown">
-                    <a href="#">Pages</a>
-                    <ul class="submenu tw-submenu">
-                      <li><a href="about.html">About Us</a></li>
-                      <li><a href="team.html">Our Team</a></li>
-                      <li><a href="testimonial.html">Testimonials</a></li>
-                      <li><a href="pricing.html">Pricing</a></li>
-                      <li><a href="portfolio-one.html">Portfolio One</a></li>
-                      <li><a href="portfolio-two.html">Portfolio Two</a></li>
-                      <li>
-                        <a href="portfolio-three.html">Portfolio Theee</a>
-                      </li>
-                      <li><a href="portfolio-four.html">Portfolio Four</a></li>
-                      <li>
-                        <a href="portfolio-details.html">Portfolio Details</a>
-                      </li>
-                      <li><a href="faq.html">Our Faq</a></li>
-                      <li><a href="error.html">Error</a></li>
-                    </ul>
-                  </li>
-                  <li class="has-dropdown">
-                    <a href="blog.html">Blog</a>
-                    <ul class="submenu tw-submenu">
-                      <li><a href="blog.html">Blog</a></li>
-                      <li><a href="blog-list.html">Blog List</a></li>
-                      <li><a href="blog-details.html">Blog Details</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="contact.html">Contact</a></li>
+                  <li><a class="color-active smooth" href="index.html">Home</a></li>
+                  <li><a class="smooth" href="#about">About</a></li>
+                  <li><a class="smooth" href="#skills">Skills</a></li>
+                  <li><a class="smooth" href="#projects">Projects</a></li>
+                  <li><a class="smooth" href="#contact">Contact</a></li>
                 </ul>
               </nav>
             </div>
@@ -1785,9 +1772,10 @@
                           <h2 class="tw-text-605 fw-medium tw-mb-4">
                             <a
                               class="hover-text-main-two-600"
-                              href="https://github.com/Iftekhar-Islam-Ifty/Rthquick-0.2"
+                              href="https://rthquick.com/"
                               target="_blank"
-                              >Earthquick</a
+                              rel="noopener noreferrer"
+                              >rthquick</a
                             >
                           </h2>
                         </div>
@@ -1809,13 +1797,25 @@
                             </li>
                           </ul>
                         </div>
+                        <p class="portfolio-three-description">
+                          A Laravel and Blade-based multivendor marketplace
+                          designed to support Bengali heritage and handloom
+                          products alongside future vendor categories.
+                        </p>
+                        <ul class="portfolio-three-keyfacts">
+                          <li>Laravel and Blade architecture</li>
+                          <li>Multivendor marketplace foundation</li>
+                          <li>Nous Telos heritage and handloom focus</li>
+                          <li>Expandable vendor and catalog model</li>
+                        </ul>
                       </div>
                       <div>
                         <div class="portfolio-three-button">
                           <a
                             class="portfolio-three-btn tw-w-8 tw-h-8 lh-1 d-inline-flex justify-content-center align-items-center text-heading rounded-circle hover-bg-main-two-600 hover-text-white"
-                            href="https://github.com/Iftekhar-Islam-Ifty/Rthquick-0.2"
+                            href="https://rthquick.com/"
                             target="_blank"
+                            rel="noopener noreferrer"
                             ><i class="ph ph-arrow-up-right"></i
                           ></a>
                         </div>
@@ -1827,8 +1827,9 @@
                     >
                       <a
                         class="d-block cursor-hide tw-rounded-lg"
-                        href="https://github.com/Iftekhar-Islam-Ifty/Rthquick-0.2"
+                        href="https://rthquick.com/"
                         target="_blank"
+                        rel="noopener noreferrer"
                         ><img
                           class="w-100 tw-rounded-lg"
                           src="assets/images/thumbs/portfolio-three-thumb1.jpg"

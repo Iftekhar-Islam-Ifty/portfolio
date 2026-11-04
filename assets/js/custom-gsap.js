@@ -25,7 +25,7 @@
   ////////////////////////////////////////////////////
   // 01. Smooth Scroll Js
   function smoothSctoll() {
-    $(".smooth a, a.smooth").on("click", function (event) {
+    $(document).on("click", ".smooth a, a.smooth", function (event) {
       var target = $(this.getAttribute("href"));
       if (target.length) {
         event.preventDefault();

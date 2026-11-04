@@ -85,6 +85,9 @@
     let navContent = document.querySelector(".tw-main-menu-content").outerHTML;
     let mobileNavContainer = document.querySelector(".tw-main-menu-mobile");
     mobileNavContainer.innerHTML = navContent;
+    $(".tw-main-menu-mobile a.smooth").on("click", function () {
+      $(".tw-offcanvas-2-area").removeClass("opened");
+    });
     let arrow = $(".tw-main-menu-mobile .has-dropdown > a");
     arrow.each(function () {
       let self = $(this);
