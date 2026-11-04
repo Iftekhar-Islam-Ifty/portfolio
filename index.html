@@ -395,6 +395,19 @@
           text-align: center;
         }
 
+        .portfolio-three-counter .tw-btn-circle {
+          width: clamp(150px, 42vw, 210px) !important;
+          height: clamp(150px, 42vw, 210px) !important;
+        }
+
+        .portfolio-three-counter {
+          position: static !important;
+          display: block !important;
+          width: 100%;
+          text-align: center;
+          transform: translate(clamp(0px, 2vw, 12px), clamp(12px, 4vw, 20px));
+        }
+
         .about-three-counter .tw-btn-circle {
           width: clamp(220px, 72vw, 280px);
           height: clamp(220px, 72vw, 280px);
@@ -467,7 +480,7 @@
         }
 
         .about-three-wrap-shape {
-          display: none;
+          display: none !important;
         }
 
         .banner-three-wrap {
