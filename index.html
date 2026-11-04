@@ -174,7 +174,7 @@
         /* Keep the figure high in the hero, matching the desktop composition. */
         .banner-three-man {
           width: min(92vw, 360px);
-          top: -150px !important;
+          top: clamp(-150px, -42vw, -96px) !important;
           bottom: auto !important;
           inset-block-end: auto !important;
         }
@@ -187,9 +187,10 @@
         /* Dock the continuation card over the image bottom with no visible gap. */
         .banner-three-center {
           width: 100%;
-          margin-top: 0;
+          margin-top: -75px;
           margin-inline: auto;
-          padding: 16px 20px 28px;
+          padding: clamp(12px, 4vw, 16px) clamp(14px, 5vw, 20px)
+            clamp(22px, 7vw, 28px);
         }
 
         .banner-three-center-title {
@@ -197,13 +198,13 @@
         }
 
         .hero-bridge {
-          gap: 6px 12px;
-          font-size: 0.65rem;
-          letter-spacing: 0.08em;
+          gap: clamp(4px, 1.8vw, 6px) clamp(8px, 3.5vw, 12px);
+          font-size: clamp(0.55rem, 2.5vw, 0.65rem);
+          letter-spacing: clamp(0.03em, 0.3vw, 0.08em);
         }
 
         .hero-bridge span {
-          gap: 12px;
+          gap: clamp(8px, 3.5vw, 12px);
         }
       }
 
@@ -266,7 +267,7 @@
 
       @media screen and (max-width: 767px) {
         .banner-three-area {
-          padding-block: 120px 56px;
+          padding-block: clamp(88px, 28vw, 120px) clamp(36px, 13vw, 56px);
         }
 
         .banner-three-title {
@@ -280,6 +281,12 @@
           line-height: 0.88;
           letter-spacing: -0.02em;
           text-wrap: balance;
+        }
+
+        .banner-three-title span {
+          display: block;
+          line-height: 0.82;
+          white-space: nowrap;
         }
 
         .banner-three-center-title {
@@ -338,6 +345,13 @@
 
         .banner-three-center {
           padding-inline: 14px;
+          margin-top: -8px;
+        }
+
+        @media screen and (max-width: 265px) {
+          .banner-three-center {
+            margin-top: -75px;
+          }
         }
 
         .hero-bridge {
@@ -347,6 +361,12 @@
 
         .hero-bridge span {
           gap: 8px;
+        }
+      }
+
+      @media screen and (min-width: 375px) and (max-width: 767px) {
+        .banner-three-center {
+          margin-top: 45px;
         }
       }
 
@@ -374,7 +394,7 @@
         .about-three-right {
           display: grid;
           grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-          gap: 12px;
+          gap: clamp(8px, 3vw, 12px);
           align-items: center;
         }
 
@@ -399,7 +419,7 @@
 
         .about-mobile-stats {
           display: grid;
-          gap: 10px;
+          gap: clamp(6px, 2.5vw, 10px);
           min-width: 0;
         }
 
@@ -407,8 +427,8 @@
           display: flex;
           flex-direction: column;
           justify-content: center;
-          min-height: 92px;
-          padding: 14px 12px;
+          min-height: clamp(76px, 24vw, 92px);
+          padding: clamp(10px, 3.5vw, 14px) clamp(8px, 3vw, 12px);
           background: #f5f5f5;
           box-shadow:
             0 4px 4px 0 rgba(0, 0, 0, 0.25),
@@ -439,7 +459,7 @@
         .banner-three-right {
           display: grid !important;
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 10px;
+          gap: clamp(6px, 2.5vw, 10px);
           width: 100%;
           max-width: none;
           margin: 18px 0 0;
@@ -452,7 +472,7 @@
           max-width: none;
           min-width: 0;
           margin: 0 !important;
-          padding: 14px;
+          padding: clamp(10px, 3.5vw, 14px);
         }
 
         .banner-three-right .banner-three-counter-item:last-child {
@@ -1028,7 +1048,8 @@
                     />
                   </div>
                   <h1 class="banner-three-title text-black tw-mb-30">
-                    software engineer
+                    <span>software</span>
+                    <span>engineer</span>
                   </h1>
                   <div
                     class="banner-three-wrap d-flex justify-content-between align-items-end position-relative z-1"
