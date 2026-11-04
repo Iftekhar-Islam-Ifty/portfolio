@@ -272,9 +272,9 @@
 
         .banner-three-title {
           position: relative;
-          left: 50%;
-          width: 100vw;
-          max-width: none;
+          left: 50vw;
+          width: 100vw !important;
+          max-width: none !important;
           margin-inline: 0;
           transform: translateX(-50%);
           font-size: clamp(3.75rem, 22vw, 6.5rem);
@@ -339,7 +339,16 @@
       }
 
       @media screen and (max-width: 374px) {
+        .banner-three-area {
+          padding-top: clamp(104px, 36vw, 130px);
+        }
+
         .banner-three-title {
+          left: calc(50vw - 12px);
+          width: 100vw !important;
+          max-width: none !important;
+          margin-inline: 0;
+          transform: translateX(-50%);
           font-size: clamp(4rem, 24vw, 6rem);
         }
 
@@ -367,6 +376,16 @@
       @media screen and (min-width: 375px) and (max-width: 767px) {
         .banner-three-center {
           margin-top: 45px;
+        }
+      }
+
+      @media screen and (min-width: 301px) and (max-width: 767px) {
+        .banner-three-title {
+          left: calc(50vw - 12px);
+          width: 100vw !important;
+          max-width: none !important;
+          margin-inline: 0;
+          transform: translateX(-50%);
         }
       }
 
